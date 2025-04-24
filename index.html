@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STU University - Student Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="credits">
+        <p>DONE BY <strong>2203A51801</strong> & <strong>2203A51742</strong></p>
+    </div>
+    
+    <div class="login-container">
+        <div class="login-glass">
+            <div class="login-header">
+                <img src="https://via.placeholder.com/80x80?text=STU" alt="University Logo" class="university-logo">
+                <h1>STU University</h1>
+                <p>Student Academic Portal</p>
+            </div>
+
+            <form class="login-form" method="POST" action="dashboard.html">
+                <div class="input-group">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" placeholder="Hallticket Number" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" required>
+                    <i class="fas fa-eye toggle-password"></i>
+                </div>
+                
+                <div class="captcha-container">
+                    <div class="captcha-display">STU<span>2</span>0<span>2</span>3</div>
+                    <input type="text" placeholder="Enter Captcha" required>
+                </div>
+                
+                <button type="button" class="login-btn" >
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                
+                
+                <div class="login-footer">
+                    <a href="#">Forgot Password?</a>
+                    <a href="#">First Time User?</a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="login-links">
+            <a href="#"><i class="fas fa-user-tie"></i> Faculty Login</a>
+            <a href="#"><i class="fas fa-users"></i> Parent Portal</a>
+            <a href="#"><i class="fas fa-building"></i> Administration</a>
+        </div>
+        
+        <div class="university-info">
+            <p>© 2023 STU University. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.querySelector('.toggle-password').addEventListener('click', function() {
+            const passwordInput = document.querySelector('input[type="password"]');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                this.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                this.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+    </script>
+    <script>
+        // Password toggle
+        const togglePassword = document.querySelector('.toggle-password');
+        const passwordInput = document.querySelector('input[type="password"]');
+    
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePassword.classList.toggle('fa-eye');
+            togglePassword.classList.toggle('fa-eye-slash');
+        });
+    
+        // Login form logic
+        const loginBtn = document.querySelector('.login-btn');
+        loginBtn.addEventListener('click', () => {
+            const hallticket = document.querySelector('input[placeholder="Hallticket Number"]').value.trim();
+            const password = document.querySelector('input[type="password"]').value.trim();
+            const captcha = document.querySelector('input[placeholder="Enter Captcha"]').value.trim();
+            const actualCaptcha = "STU2023";
+    
+            if (!hallticket || !password || !captcha) {
+                alert("Please fill out all fields.");
+                return;
+            }
+    
+            if (captcha !== actualCaptcha) {
+                alert("Incorrect captcha. Please try again.");
+                return;
+            }
+    
+            // If all is valid, redirect to dashboard
+            window.location.href = "dashboard.html";
+        });
+    </script>
+    
+</body>
+</html>

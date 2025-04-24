@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STU University - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css">
+</head>
+<body>
+    <div class="credits">
+        <p>DONE BY <strong>2203A51801</strong> & <strong>2203A51742</strong></p>
+    </div>
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <div class="nav-header">
+            <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Student" class="student-avatar">
+            <h3>John Doe</h3>
+            <p>Computer Science</p>
+            <div class="student-id">ID: STU2023CSE001</div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="active" data-section="dashboard">
+                <i class="fas fa-home"></i> Dashboard
+            </li>
+            <li data-section="academics">
+                <i class="fas fa-graduation-cap"></i> Academics
+            </li>
+            <li data-section="courses">
+                <i class="fas fa-book"></i> Courses
+            </li>
+            <li data-section="timetable">
+                <i class="fas fa-calendar-alt"></i> Timetable
+            </li>
+            <li data-section="results">
+                <i class="fas fa-chart-line"></i> Results
+            </li>
+            <li data-section="attendance">
+                <i class="fas fa-calendar-check"></i> Attendance
+            </li>
+            <li data-section="library">
+                <i class="fas fa-book-open"></i> Library
+            </li>
+            <li data-section="finance">
+                <i class="fas fa-wallet"></i> Finance
+            </li>
+            <li data-section="notices">
+                <i class="fas fa-bullhorn"></i> Notices
+            </li>
+            <li data-section="settings">
+                <i class="fas fa-cog"></i> Settings
+            </li>
+        </ul>
+        
+        <div class="nav-footer">
+            <a href="index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navigation -->
+        <header class="top-nav">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search portal...">
+            </div>
+            
+            <div class="user-actions">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="message-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span class="badge">5</span>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Profile">
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <section id="dashboard" class="content-section active">
+            <div class="welcome-banner">
+                <h1>Welcome Back, John!</h1>
+                <p>Here's what's happening with your academics today</p>
+                <div class="date-display">
+                    <i class="fas fa-calendar-day"></i>
+                    <span id="current-date">November 20, 2023</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <!-- Stat Card 1 -->
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Attendance</h3>
+                        <div class="stat-value">87.5%</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 87.5%"></div>
+                        </div>
+                        <p>Current Semester</p>
+                    </div>
+                </div>
+
+                <!-- Stat Card 2 -->
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>CGPA</h3>
+                        <div class="stat-value">8.42</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 84.2%"></div>
+                        </div>
+                        <p>Out of 10.0</p>
+                    </div>
+                </div>
+
+                <!-- Stat Card 3 -->
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Backlogs</h3>
+                        <div class="stat-value">2</div>
+                        <div class="backlog-list">
+                            <span>Mathematics</span>
+                            <span>Physics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stat Card 4 -->
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Current Courses</h3>
+                        <div class="stat-value">6</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 100%"></div>
+                        </div>
+                        <p>Semester 5</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-row">
+                <!-- Academic Performance Chart -->
+                <div class="content-card wide">
+                    <div class="card-header">
+                        <h2><i class="fas fa-chart-line"></i> Academic Performance</h2>
+                        <select class="chart-filter">
+                            <option>Last 5 Semesters</option>
+                            <option>Current Year</option>
+                            <option>All Time</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Upcoming Deadlines -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-calendar-times"></i> Upcoming Deadlines</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <ul class="deadline-list">
+                        <li>
+                            <div class="deadline-date">
+                                <span class="day">24</span>
+                                <span class="month">NOV</span>
+                            </div>
+                            <div class="deadline-info">
+                                <h3>Data Structures Assignment</h3>
+                                <p>Chapter 5-8 Problems</p>
+                                <span class="time-left">3 days left</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="deadline-date">
+                                <span class="day">28</span>
+                                <span class="month">NOV</span>
+                            </div>
+                            <div class="deadline-info">
+                                <h3>Machine Learning Project</h3>
+                                <p>Phase 1 Submission</p>
+                                <span class="time-left">7 days left</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="deadline-date">
+                                <span class="day">30</span>
+                                <span class="month">NOV</span>
+                            </div>
+                            <div class="deadline-info">
+                                <h3>Library Book Due</h3>
+                                <p>"Introduction to Algorithms"</p>
+                                <span class="time-left">9 days left</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-row">
+                <!-- Recent Notices -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-bullhorn"></i> Recent Notices</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="notice-board">
+                        <div class="notice-item urgent">
+                            <h3>Semester Registration Deadline</h3>
+                            <p>Last date for semester registration is November 30th. Late submissions will incur penalties.</p>
+                            <div class="notice-meta">
+                                <span><i class="fas fa-calendar"></i> 15 NOV 2023</span>
+                                <span><i class="fas fa-building"></i> Academic Office</span>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <h3>Library Extended Hours</h3>
+                            <p>During finals week, the library will remain open 24/7. Please respect the quiet study zones.</p>
+                            <div class="notice-meta">
+                                <span><i class="fas fa-calendar"></i> 10 NOV 2023</span>
+                                <span><i class="fas fa-book"></i> Library</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-link"></i> Quick Links</h2>
+                    </div>
+                    <div class="quick-links">
+                        <a href="#" class="quick-link">
+                            <i class="fas fa-cloud-download-alt"></i>
+                            <span>Download Study Materials</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Submit Assignment</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <i class="fas fa-book"></i>
+                            <span>E-Library Access</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Fee Payment</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <i class="fas fa-user-edit"></i>
+                            <span>Update Profile</span>
+                        </a>
+                        <a href="#" class="quick-link">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Help Desk</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Campus News -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-newspaper"></i> Campus News</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="news-feed">
+                        <div class="news-item">
+                            <img src="https://via.placeholder.com/100x60?text=STU+News" alt="News Image">
+                            <div class="news-content">
+                                <h3>Annual Tech Fest 2023</h3>
+                                <p>The biggest technical festival of the year starts next week with exciting competitions and workshops.</p>
+                                <span class="news-date">2 days ago</span>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <img src="https://via.placeholder.com/100x60?text=STU+News" alt="News Image">
+                            <div class="news-content">
+                                <h3>Research Paper Published</h3>
+                                <p>Dr. Smith and team published groundbreaking research in AI journal.</p>
+                                <span class="news-date">1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Sections (Initially Hidden) -->
+        <section id="academics" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Academics</h2>
+                <p class="section-description">
+                    Our university fosters academic excellence through a wide array of programs designed to empower students for the future. Discover opportunities in undergraduate, postgraduate, and research domains.
+                </p>
+        
+                <div class="academic-cards">
+                    <div class="card">
+                        <h3>Undergraduate Programs</h3>
+                        <p>Dynamic, industry-oriented courses in fields such as Engineering, Arts, Science, and Commerce.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Postgraduate Studies</h3>
+                        <p>Advanced degree programs for specialized knowledge and professional development.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Research & Innovation</h3>
+                        <p>Collaborate with top researchers and contribute to cutting-edge advancements and global solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="courses" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Courses Offered</h2>
+                <p class="section-description">
+                    Explore a wide variety of courses designed to meet the academic and career goals of every student. Our curriculum is structured, updated, and focused on industry relevance.
+                </p>
+        
+                <div class="course-cards">
+                    <div class="card">
+                        <h3>Bachelor's Programs</h3>
+                        <p>Innovative and foundational programs in Engineering, Arts, Commerce, and Science streams.</p>
+                    </div>
+        
+                    <div class="card">
+                        <h3>Master's Programs</h3>
+                        <p>Postgraduate degrees that offer advanced learning and research opportunities in your chosen field.</p>
+                    </div>
+        
+                    <div class="card">
+                        <h3>Certificate & Diploma</h3>
+                        <p>Short-term courses and certifications to boost your skills and enhance your professional growth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- More sections for Timetable, Results, etc. -->
+    </main>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    
+    <script>
+        // Set current date
+        document.getElementById('current-date').textContent = moment().format('MMMM D, YYYY');
+        
+        // Navigation between sections
+        document.querySelectorAll('.nav-menu li').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all nav items
+                document.querySelectorAll('.nav-menu li').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                
+                // Add active class to clicked nav item
+                this.classList.add('active');
+                
+                // Hide all sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected section
+                const target = this.getAttribute('data-section');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+        // Example: Incorrect method (using POST instead of GET)
+// Correct the method to 'GET'
+fetch('/api/data', {
+  method: 'GET', // Changed from 'POST' to 'GET'
+})
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+        // This will be reached if the 405 error occurs.
+      throw new Error('Network response was not ok.');
+    }
+  })
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+        
+        // Initialize performance chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5'],
+                datasets: [{
+                    label: 'SGPA',
+                    data: [7.8, 8.2, 8.0, 8.5, 8.7],
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#e74c3c',
+                    pointBorderWidth: 2,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#2c3e50',
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 12
+                        },
+                        padding: 12,
+                        cornerRadius: 8
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 7,
+                        max: 10,
+                        ticks: {
+                            stepSize: 0.5
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Toggle password visibility for login page
+        if (document.querySelector('.toggle-password')) {
+            document.querySelector('.toggle-password').addEventListener('click', function() {
+                const passwordInput = document.querySelector('input[type="password"]');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    this.classList.replace('fa-eye', 'fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    this.classList.replace('fa-eye-slash', 'fa-eye');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
